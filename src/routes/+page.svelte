@@ -27,29 +27,17 @@
 	{@html solarizedDark}
 </svelte:head>
 
-<section>
-	<Header />
-	<Disclaimer />
+<section class="flex max-h-screen flex-col gap-4 p-4">
+	<section class="flex flex-col gap-4">
+		<Header />
+		<Disclaimer />
+	</section>
 
-	<form method="POST" class="flex flex-col gap-2" use:enhance={formSubmitEnhanceHandler}>
-		<div>
-			<textarea
-				name="the-code"
-				id="theCode"
-				placeholder="Your wish? (e.g.: Buatlah sebuah fungsi rekursif dengan javascript dengan nama isPalindrome untuk mengecek apakah sebuah string palindrome atau tidak)"
-				class="h-64 w-full rounded-lg border border-gray-300 bg-gray-100 p-4 text-xl text-gray-800 focus:border-gray-500 focus:bg-white focus:outline-none"
-			/>
-		</div>
-		<div>
-			<button
-				type="submit"
-				class="rounded-lg bg-sky-200 py-2 px-4 transition-all duration-500 hover:bg-sky-400 hover:text-slate-100"
-				>Submit</button
-			>
-		</div>
-	</form>
+	<section class="min-h-fit overflow-scroll rounded-lg bg-gray-300/40 p-4">
+		{#if !isLoading && !form?.success}
+			<p class="text-xl font-semibold">Hasil Kodenya akan terlihat di sini nanti ...</p>
+		{/if}
 
-	<section class="py-4">
 		{#if isLoading}
 			<code class="animate-pulse">
 				<pre>Hasil Kodenya akan terlihat di sini nanti ...</pre>
@@ -57,7 +45,28 @@
 		{/if}
 
 		{#if form?.success && !isLoading}
-			<Highlight language={javascript} code={form.data?.choices[0]?.text} />
+			<section class="flex flex-col gap-4">
+				<p class="text-xl font-semibold">{form.data?.prompt}</p>
+
+				<div class="overflow-hidden rounded-lg">
+					<Highlight language={javascript} code={form.data?.response?.choices[0]?.text} />
+				</div>
+			</section>
 		{/if}
 	</section>
+
+	<form method="POST" class="flex flex-row gap-2" use:enhance={formSubmitEnhanceHandler}>
+		<textarea
+			name="the-code"
+			id="theCode"
+			placeholder="Your wish? (e.g.: Buatlah sebuah fungsi rekursif dengan javascript dengan nama isPalindrome untuk mengecek apakah sebuah string palindrome atau tidak)"
+			class="h-24 w-full rounded-lg border border-gray-300 bg-gray-100 p-4 text-xl text-gray-800 focus:border-gray-500 focus:bg-white focus:outline-none"
+		/>
+
+		<button
+			type="submit"
+			class="w-48 rounded-lg bg-sky-200 py-2 px-4 transition-all duration-500 hover:bg-sky-400 hover:text-slate-100"
+			>Submit</button
+		>
+	</form>
 </section>

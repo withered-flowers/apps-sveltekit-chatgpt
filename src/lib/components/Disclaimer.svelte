@@ -1,4 +1,4 @@
-<h2 class="animate-pulse py-4 text-2xl text-red-400">
+<section class="animate-pulse text-2xl text-red-400">
 	<p>Disclaimer:</p>
 
 	<ul class="	list-disc pl-8">
@@ -10,4 +10,4 @@
 		<li>Mumpung OpenAI Codex nya masih gratis khan?</li>
 		<li>Dibuat dengan OpenAI Codex dan bukan ChatGPT sehingga tidak bisa diajak berkomunikasi</li>
 	</ul>
-</h2>
+</section>

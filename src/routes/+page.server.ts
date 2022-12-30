@@ -4,6 +4,17 @@ import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import type { ReturnOpenAI } from 'src/global';
 
+type ResponseData = {
+	prompt: string;
+	response: ReturnOpenAI;
+};
+
+type ResponseSuccess = {
+	success?: boolean;
+	error?: boolean;
+	data: ResponseData;
+};
+
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {
 		const requestData = await request.formData();
@@ -30,12 +41,20 @@ export const actions: Actions = {
 		const responseJson: ReturnOpenAI = await response.json();
 
 		if (response.ok) {
-			return {
+			const responseData: ResponseSuccess = {
 				success: true,
-				data: responseJson
+				data: {
+					prompt,
+					response: responseJson
+				}
 			};
+
+			return responseData;
 		} else {
-			return fail(400, { error: responseJson });
+			return fail(400, {
+				error: true,
+				data: responseJson
+			});
 		}
 	}
 };
