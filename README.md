@@ -1,38 +1,21 @@
-# create-svelte
+# Apps SvelteKit OpenAI (Codex)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Disclaimer
+- Aplikasi ini **bukan** menggunakan ChatGPT (GPT-3.5). API untuk ChatGPT belum direlease secara resmi oleh OpenAI secara langsung.
+- Aplikasi ini menggunakan Open AI (Codex), yang berdasarkan GPT-3.
+- Aplikasi ini dibuat hanya untuk mempelajari bagaimana API dari OpenAI (Codex) ini bekerja.
 
-## Creating a project
+## Demo Website
+https://apps-sveltekit-chatgpt.vercel.app
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tech Stack
+- [SvelteKit] (https://kit.svelte.dev/)
+- [TailwindCSS] (https://tailwindcss.com/)
+- [OpenAI - Codex] (https://openai.com/blog/openai-codex/)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## How To Use this?
+1. Registrasi pada [OpenAI](https://beta.openai.com/account/api-keys) untuk mendapatkan API Key yang dibutuhkan
+1. Fork repository ini
+1. Deploy di tempat kesayangan sendiri (prefer yang sudah mendukung adapter-auto dari SvelteKit - Vercel / Netlify / Cloudflare Pages)
+1. Jangan lupa pada saat deploy sematkan `environment variable` dengan nama `CHAT_GPT_TOKEN` yang isinya adalah API Key dari OpenAI.
+1. Dan *voila* tunggu deploymentnya dan siap digunakan !
