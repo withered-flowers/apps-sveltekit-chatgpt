@@ -6,7 +6,7 @@
 - Aplikasi ini dibuat hanya untuk mempelajari bagaimana API dari OpenAI (Codex) ini bekerja.
 
 ## Demo Website
-https://apps-sveltekit-chatgpt.vercel.app
+https://apps-sveltekit-openai-codex.vercel.app
 
 ## Tech Stack
 - [SvelteKit] (https://kit.svelte.dev/)
